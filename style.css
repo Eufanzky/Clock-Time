@@ -22,11 +22,13 @@ a {
 .element--rgb-style {
     text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 }
-
-/*it hides the element with that class*/
-.inactive {
-    display: none;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
+
+input[type=number] { -moz-appearance:textfield; }
 
 /*header*/
 .header-container {
@@ -50,13 +52,13 @@ a {
 }
 .header-container nav li {
     margin: 0px 5px;
+    color: white;
+    font-size: 1.2rem;
+    height: min-content;
 }
 .header-container nav li:hover {
     text-decoration: underline;
-}
-.header-container nav li a{
-    color: white;
-    font-size: 1.2rem;
+    cursor: pointer;
 }
 
 /*main content*/
@@ -96,3 +98,113 @@ a {
     text-align: center;
 }
 
+
+
+/*Chronomete Page*/
+
+.chronometer-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.chrono-inputs-container {
+    margin-bottom: 10px;
+    width: 35%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+.chrono-inputs-container div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.chrono-inputs-container span {
+    font-size: 4rem;
+}
+.chrono-inputs-container p {
+    font-size: 2rem;
+}
+.chrono-buttons-container {
+    min-width: 320px;
+    max-width: 735px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.chrono-buttons-container button { 
+    width: 20%;
+    height: 40px;
+    overflow: hidden;
+    border: 0.2px solid white;
+    background: transparent;
+    color: white;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+.chrono-buttons-container button:hover {   
+    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+/*timer section*/
+.timer-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.timer-inputs-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 35%;
+    margin-bottom: 30px;
+}
+.timer-inputs-container div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.timer-inputs-container div input {
+    width: 75px;
+    height: 70px;
+    background: transparent;
+    border: transparent;
+    outline:0;
+    font-size: 4rem;
+    color: white;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+
+}
+
+.timer-inputs-container div input::placeholder {
+    color: white;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+}
+
+.timer-inputs-container div span {
+    font-size: 2rem;
+    color: white;
+}
+
+
+/*inactive*/
+/*it hides the element with that class*/
+.inactive {
+    display: none;
+}
