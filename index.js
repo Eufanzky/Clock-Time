@@ -76,29 +76,31 @@ const chronometerFunction = () => {
 
 
 const timerFunction = () => {
-   
+
     timerButtonStart.addEventListener('click', () => {
-        
+
+        timerButtonStart.innerHTML = "Start!"
+
         const timerHours = document.querySelector('#timerHoursInput');
         const timerMinutes = document.querySelector('#timerMinutesInput');
         const timerSeconds = document.querySelector('#timerSecondsInput');
-
+    
         const newTimerHours = document.querySelector('#timer-p-hours');
         const newTimerMinutes = document.querySelector('#timer-p-minutes');
         const newTimerSeconds = document.querySelector('#timer-p-seconds');
-
+    
         const timerAdvertise = document.querySelector('#timer-advertise');
-
-
+    
+    
         let hours = timerHours.value;
         let minutes = timerMinutes.value;
         let seconds = timerSeconds.value;
-
-        
+    
 
         if(seconds==='' || minutes==='' || hours==='') {
             timerAdvertise.classList.remove('inactive');
         } else {
+            timerAdvertise.classList.add('inactive');
             timerButtonStart.disabled = true;
             timerHours.classList.add('inactive');
             newTimerHours.innerHTML = `${addLeadingZeros(hours, 2)}`;
@@ -109,25 +111,40 @@ const timerFunction = () => {
             timerSeconds.classList.add('inactive');
             newTimerSeconds.innerHTML = `${addLeadingZeros(seconds, 2)}`;
             newTimerSeconds.classList.remove('inactive');
-            setInterval(()=>{
-                if(parseInt(seconds) === 0) {
-                    seconds = 60; 
-                    minutes--;
-                    if(parseInt(minutes) < 0) {
-                        minutes = 60;
-                        hours--;
+            const timerInterval = setInterval(()=>{
+                if (parseInt(seconds)===0 && parseInt(minutes)===0 && parseInt(hours)===0) {
+                    // console.log("finished");
+                    clearInterval(timerInterval);
+                } else {
+                    seconds--;
+                    if(parseInt(seconds) < 0) {
+                        seconds = 59; 
+                        minutes--;
+                        if(parseInt(minutes) < 0) {
+                            minutes = 59;
+                            hours--;
+                            if (parseInt(hours) < 0) {
+                                hours = 0
+                            }
+                        }
                     }
+                
+                    newTimerSeconds.innerHTML = `${addLeadingZeros(seconds, 2)}`; 
+                    newTimerMinutes.innerHTML = `${addLeadingZeros(minutes, 2)}`; 
+                    newTimerHours.innerHTML = `${addLeadingZeros(hours, 2)}`; 
                 }
-    
-                seconds--;
-    
-                newTimerSeconds.innerHTML = `${addLeadingZeros(seconds, 2)}`; 
-                newTimerMinutes.innerHTML = `${addLeadingZeros(minutes, 2)}`; 
-                newTimerHours.innerHTML = `${addLeadingZeros(hours, 2)}`; 
+                timerButtonStop.addEventListener('click' , () => {
+                    clearInterval(timerInterval);
+                    timerButtonStart.disabled = false;
+                    timerButtonStart.innerHTML = "Continue!!"
+                });
+                
             },1000)
+            
         }
 
     });
+    
 };
 
 
