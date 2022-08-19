@@ -62,6 +62,7 @@ const chronometerFunction = () => {
         chronoButtonReset.addEventListener('click', () => {
             clearInterval(chronoInterval);
             chronoButtonStart.disabled = false;
+            chronoButtonStart.innerHTML = "Start!"
             seconds=0;
             minutes=0;
             hours=0;
@@ -75,7 +76,58 @@ const chronometerFunction = () => {
 
 
 const timerFunction = () => {
+   
+    timerButtonStart.addEventListener('click', () => {
+        
+        const timerHours = document.querySelector('#timerHoursInput');
+        const timerMinutes = document.querySelector('#timerMinutesInput');
+        const timerSeconds = document.querySelector('#timerSecondsInput');
 
+        const newTimerHours = document.querySelector('#timer-p-hours');
+        const newTimerMinutes = document.querySelector('#timer-p-minutes');
+        const newTimerSeconds = document.querySelector('#timer-p-seconds');
+
+        const timerAdvertise = document.querySelector('#timer-advertise');
+
+
+        let hours = timerHours.value;
+        let minutes = timerMinutes.value;
+        let seconds = timerSeconds.value;
+
+        
+
+        if(seconds==='' || minutes==='' || hours==='') {
+            timerAdvertise.classList.remove('inactive');
+        } else {
+            timerButtonStart.disabled = true;
+            timerHours.classList.add('inactive');
+            newTimerHours.innerHTML = `${addLeadingZeros(hours, 2)}`;
+            newTimerHours.classList.remove('inactive');
+            timerMinutes.classList.add('inactive');
+            newTimerMinutes.innerHTML = `${addLeadingZeros(minutes, 2)}`;
+            newTimerMinutes.classList.remove('inactive');
+            timerSeconds.classList.add('inactive');
+            newTimerSeconds.innerHTML = `${addLeadingZeros(seconds, 2)}`;
+            newTimerSeconds.classList.remove('inactive');
+            setInterval(()=>{
+                if(parseInt(seconds) === 0) {
+                    seconds = 60; 
+                    minutes--;
+                    if(parseInt(minutes) < 0) {
+                        minutes = 60;
+                        hours--;
+                    }
+                }
+    
+                seconds--;
+    
+                newTimerSeconds.innerHTML = `${addLeadingZeros(seconds, 2)}`; 
+                newTimerMinutes.innerHTML = `${addLeadingZeros(minutes, 2)}`; 
+                newTimerHours.innerHTML = `${addLeadingZeros(hours, 2)}`; 
+            },1000)
+        }
+
+    });
 };
 
 

@@ -17,3 +17,9 @@ const chronoSeconds = document.querySelector('#chrono-seconds');
 const chronoButtonStart = document.querySelector('#chrono-button-start');
 const chronoButtonStop = document.querySelector('#chrono-button-stop');
 const chronoButtonReset = document.querySelector('#chrono-button-reset');
+
+//timer section
+
+const timerButtonStart = document.querySelector('#timer-button-start');
+const timerButtonStop = document.querySelector('#timer-button-stop');
+const timerButtonReset = document.querySelector('#timer-button-reset');

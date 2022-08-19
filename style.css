@@ -180,6 +180,11 @@ input[type=number] { -moz-appearance:textfield; }
     justify-content: center;
     align-items: center;
 }
+.timer-inputs-container div p {
+    font-size: 4rem;
+    color: white;
+}
+
 .timer-inputs-container div input {
     width: 75px;
     height: 70px;
@@ -193,13 +198,65 @@ input[type=number] { -moz-appearance:textfield; }
 }
 
 .timer-inputs-container div input::placeholder {
-    color: white;
+    color: rgb(193, 193, 193);
     text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 }
 
 .timer-inputs-container div span {
     font-size: 2rem;
     color: white;
+}
+
+
+.timer-buttons-container {
+    min-width: 320px;
+    max-width: 735px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.timer-buttons-container button { 
+    width: 20%;
+    height: 40px;
+    overflow: hidden;
+    border: 0.2px solid white;
+    background: transparent;
+    color: white;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+.timer-buttons-container button:hover {   
+    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+/*advertise of the timer if the user doesnt fill all the blanks*/
+.timer-advertise-element {
+    margin-top: 40px;
+    padding: 10px;
+    font-size: 2rem;
+    color: red;
+    background-color: white;
+    position: absolute;
+    bottom: 235px;
+}
+.timer-advertise-element::before{
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-right: 20px solid transparent;
+    border-top: 25px solid transparent;
+    border-left: 20px solid transparent;
+    border-bottom: 25px solid white;
+    background-color: rgba(10, 175, 230, 0);
+    position: absolute;
+    top: -50px;
 }
 
 

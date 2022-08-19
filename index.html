@@ -45,23 +45,27 @@
         <section class="timer-container">
             <div class="timer-inputs-container">
                 <div>
-                    <input type="number" placeholder="00" name="" id="">
+                    <p id="timer-p-hours" class="inactive element--rgb-style">00</p>
+                    <input type="number" placeholder="00" id="timerHoursInput">
                     <span class="element--rgb-style">hrs</span>
                 </div>
                 <div>
-                    <input type="number" placeholder="00" name="" id="">
+                    <p id="timer-p-minutes" class="inactive element--rgb-style">00</p>
+                    <input type="number" placeholder="00" name="" id="timerMinutesInput" maxlength="2">
                     <span class="element--rgb-style">min</span>
                 </div>
                 <div>
-                    <input type="number" placeholder="00" name="" id="">
+                    <p id="timer-p-seconds" class="inactive element--rgb-style">00</p>
+                    <input type="number" placeholder="00" name="" id="timerSecondsInput" maxlength="2">
                     <span class="element--rgb-style">sec</span>
                 </div>
             </div>
             <div class="timer-buttons-container">
-                <button>Start!</button>
-                <button>Stop</button>
-                <button>Reset</button>
+                <button id="timer-button-start">Start!</button>
+                <button id="timer-button-stop">Stop</button>
+                <button id="timer-button-reset">Reset</button>
             </div>
+            <p id="timer-advertise" class="timer-advertise-element element--rgb-style inactive">Please fill all the blanks</p>
         </section>
         <section class="pomodoro-container">
 
