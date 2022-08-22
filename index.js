@@ -14,7 +14,7 @@ const getDate = () => {
     date.innerHTML = `${addLeadingZeros(day,2)} - ${addLeadingZeros(month+1,2)} - ${addLeadingZeros(year,4)}`
 }
 
-//adds zeros in front of a number
+//adds zeros in front of a number (number, number of digits)
 function addLeadingZeros(num, totalLength) {
     return String(num).padStart(totalLength, '0');
 }
@@ -117,7 +117,6 @@ const continueTimer = () => {
     timerButtonContinue.disabled = true;
 }
 
-
 const makeTimerInteval = () => {
     let hours = newTimerHours.innerHTML;
     let minutes = newTimerMinutes.innerHTML;
@@ -178,4 +177,73 @@ const resetTimer = () => {
     timerSeconds.classList.remove('inactive');
     newTimerSeconds.classList.add('inactive');
 
+}
+
+
+//pomodoro page
+let pomodoroInterval;
+let whereAmI = "pomodoro";
+
+const startPomodoro = () => {
+    pomodoroButtonStop.classList.remove('inactive');
+    pomodoroButtonContinue.classList.add('inactive');
+    pomodoroButtonStart.classList.add('inactive');
+    pomodoroButtonStart.disabled = true;
+
+    pomodoroInterval = setInterval(countPomodoro,1000);
+}
+
+const countPomodoro = () => {
+    let minutes = pomodoroMinutes.innerHTML;
+    let seconds = pomodoroSeconds.innerHTML;
+    // console.log(minutes, seconds);
+    if (parseInt(minutes) === 0 && parseInt(seconds) === 0) {
+        clearInterval(countPomodoro);
+    } else {
+        seconds--;
+        if (parseInt(seconds) < 0) {
+            seconds = 59;
+            minutes--;
+            pomodoroMinutes.innerHTML=`${addLeadingZeros(minutes, 2)}`;
+        }
+        pomodoroSeconds.innerHTML=`${addLeadingZeros(seconds, 2)}`;
+    }
+}
+
+const stopPomodoro = () => {
+    clearInterval(pomodoroInterval);
+    pomodoroButtonStop.classList.add('inactive');
+    pomodoroButtonContinue.classList.remove('inactive');
+    pomodoroButtonStart.classList.add('inactive');
+}
+const continuePomodoro = () => {
+    pomodoroInterval = setInterval(countPomodoro,1000);
+    pomodoroButtonStop.classList.remove('inactive');
+    pomodoroButtonContinue.classList.add('inactive');
+    pomodoroButtonStart.classList.add('inactive');
+}
+
+
+const skipPomodoro = () => {
+    if (whereAmI === "pomodoro") {
+        stopPomodoro();
+        pomodoroButtonStop.classList.add('inactive');
+        pomodoroButtonContinue.classList.add('inactive');
+        pomodoroButtonStart.classList.remove('inactive');
+        pomodoroButtonStart.disabled = false;
+        pomodoroInterval = null;
+        pomodoroMinutes.innerHTML=`${addLeadingZeros(5, 2)}`;
+        pomodoroSeconds.innerHTML=`${addLeadingZeros(0, 2)}`;
+        whereAmI = "break";
+    } else {
+        stopPomodoro();
+        pomodoroButtonStop.classList.add('inactive');
+        pomodoroButtonContinue.classList.add('inactive');
+        pomodoroButtonStart.classList.remove('inactive');
+        pomodoroButtonStart.disabled = false;
+        pomodoroInterval = null;
+        pomodoroMinutes.innerHTML=`${addLeadingZeros(25, 2)}`;
+        pomodoroSeconds.innerHTML=`${addLeadingZeros(0, 2)}`;
+        whereAmI = "pomodoro";
+    }
 }

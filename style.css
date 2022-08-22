@@ -22,6 +22,7 @@ a {
 .element--rgb-style {
     text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 }
+/*This styles are for hiding inputs styles*/
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
@@ -30,7 +31,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number] { -moz-appearance:textfield; }
 
-/*header*/
+/*HEADER STYLES*/
 .header-container {
     width: 100%;
     height: 13%;
@@ -57,13 +58,13 @@ input[type=number] { -moz-appearance:textfield; }
     height: min-content;
     transition: 0.2s;
 }
-.header-container nav li:hover {
+.header-container nav li:hover {/*when links are hovered it occurs*/
     font-size: 1.5rem;
     text-decoration: underline;
     cursor: pointer;
 }
 
-/*main content*/
+/*****************MAIN CONTENT STARTS**********/
 
 .main-container {
     width: 100%;
@@ -73,7 +74,7 @@ input[type=number] { -moz-appearance:textfield; }
     justify-content: center;
 }
 
-/*time container*/
+/*HOME PAGE*/
 .actualTime-container {
     width: 100%;
     height: 100%;
@@ -82,18 +83,15 @@ input[type=number] { -moz-appearance:textfield; }
     justify-content: center;
 
 }
-
 .date, .time {
     margin: 0;
     padding: 0;
 }
-
 .date {
     font-size: 2rem;
     color: #ffffff;
     text-align: center;
 }
-
 .time {
     font-size: 4rem;
     color: #ffffff;
@@ -102,7 +100,7 @@ input[type=number] { -moz-appearance:textfield; }
 
 
 
-/*Chronomete Page*/
+/*CHRONOMETER PAGE*/
 
 .chronometer-container {
     width: 100%;
@@ -159,7 +157,7 @@ input[type=number] { -moz-appearance:textfield; }
     cursor: pointer;
 }
 
-/*timer section*/
+/*POMODORO PAGE*/
 .timer-container {
     width: 100%;
     height: 100%;
@@ -186,7 +184,6 @@ input[type=number] { -moz-appearance:textfield; }
     font-size: 4rem;
     color: white;
 }
-
 .timer-inputs-container div input {
     width: 75px;
     height: 70px;
@@ -198,18 +195,14 @@ input[type=number] { -moz-appearance:textfield; }
     text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 
 }
-
 .timer-inputs-container div input::placeholder {
     color: rgb(193, 193, 193);
     text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 }
-
 .timer-inputs-container div span {
     font-size: 2rem;
     color: white;
 }
-
-
 .timer-buttons-container {
     min-width: 320px;
     max-width: 735px;
@@ -219,8 +212,6 @@ input[type=number] { -moz-appearance:textfield; }
     justify-content: space-evenly;
     align-items: center;
 }
-
-
 .timer-buttons-container button { 
     width: 20%;
     height: 40px;
@@ -262,8 +253,41 @@ input[type=number] { -moz-appearance:textfield; }
 }
 
 
+/*POMODORO PAGE*/
+.pomodoro-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.pomodoro-inputs-container {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.pomodoro-inputs-container div {
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.pomodoro-inputs-container div p{
+    font-size: 4rem;
+    color: white;
+}
+.pomodoro-inputs-container div span {
+    font-size: 3rem;
+    color: white;
+}
+/*****************MAIN CONTENT FINISHES**********/
+
 /*inactive*/
 /*it hides the element with that class*/
+/*BE CAREFUL: THIS CLASS HAS TO BE AT THE BOTTOM, OR IT WON'T WORK FOR SOME tags*/
 .inactive {
     display: none;
 }

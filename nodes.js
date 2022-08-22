@@ -25,7 +25,6 @@ const timerButtonContinue = document.querySelector('#timer-button-continue');
 const timerButtonStop = document.querySelector('#timer-button-stop');
 const timerButtonReset = document.querySelector('#timer-button-reset');
 
-
 const timerHours = document.querySelector('#timerHoursInput');
 const timerMinutes = document.querySelector('#timerMinutesInput');
 const timerSeconds = document.querySelector('#timerSecondsInput');
@@ -34,4 +33,12 @@ const newTimerMinutes = document.querySelector('#timer-p-minutes');
 const newTimerSeconds = document.querySelector('#timer-p-seconds');
 const timerAdvertise = document.querySelector('#timer-advertise');
 
+//pomodoro section
+const pomodoroMinutes = document.querySelector('#pomodoro-minutes');
+const pomodoroSeconds = document.querySelector('#pomodoro-seconds');
 
+
+const pomodoroButtonSkip = document.querySelector('#pomodoro-button-skip');
+const pomodoroButtonContinue = document.querySelector('#pomodoro-button-continue');
+const pomodoroButtonStart = document.querySelector('#pomodoro-button-start');
+const pomodoroButtonStop = document.querySelector('#pomodoro-button-stop');
