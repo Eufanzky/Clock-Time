@@ -21,5 +21,17 @@ const chronoButtonReset = document.querySelector('#chrono-button-reset');
 //timer section
 
 const timerButtonStart = document.querySelector('#timer-button-start');
+const timerButtonContinue = document.querySelector('#timer-button-continue');
 const timerButtonStop = document.querySelector('#timer-button-stop');
 const timerButtonReset = document.querySelector('#timer-button-reset');
+
+
+const timerHours = document.querySelector('#timerHoursInput');
+const timerMinutes = document.querySelector('#timerMinutesInput');
+const timerSeconds = document.querySelector('#timerSecondsInput');
+const newTimerHours = document.querySelector('#timer-p-hours');
+const newTimerMinutes = document.querySelector('#timer-p-minutes');
+const newTimerSeconds = document.querySelector('#timer-p-seconds');
+const timerAdvertise = document.querySelector('#timer-advertise');
+
+

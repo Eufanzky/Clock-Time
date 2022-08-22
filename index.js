@@ -24,7 +24,7 @@ const myInterval = () => setInterval(()=> {
     getDate();
 },1000)
 
-/*chronometer section*/
+/*chronometer page*/
 
 const chronometerFunction = () => {
     let seconds=0;
@@ -75,77 +75,107 @@ const chronometerFunction = () => {
 };
 
 
-const timerFunction = () => {
 
-    timerButtonStart.addEventListener('click', () => {
 
-        timerButtonStart.innerHTML = "Start!"
+/*timer page*/
+let timerInterval;
+    
+const startTimer = () => {
+    let hours = timerHours.value;
+    let minutes = timerMinutes.value;
+    let seconds = timerSeconds.value;
+    timerButtonContinue.classList.add('inactive');
 
-        const timerHours = document.querySelector('#timerHoursInput');
-        const timerMinutes = document.querySelector('#timerMinutesInput');
-        const timerSeconds = document.querySelector('#timerSecondsInput');
-    
-        const newTimerHours = document.querySelector('#timer-p-hours');
-        const newTimerMinutes = document.querySelector('#timer-p-minutes');
-        const newTimerSeconds = document.querySelector('#timer-p-seconds');
-    
-        const timerAdvertise = document.querySelector('#timer-advertise');
-    
-    
-        let hours = timerHours.value;
-        let minutes = timerMinutes.value;
-        let seconds = timerSeconds.value;
-    
+    if(seconds==='' || minutes==='' || hours==='') {
+        timerAdvertise.classList.remove('inactive');
+    } else {
+        timerAdvertise.classList.add('inactive');
 
-        if(seconds==='' || minutes==='' || hours==='') {
-            timerAdvertise.classList.remove('inactive');
-        } else {
-            timerAdvertise.classList.add('inactive');
-            timerButtonStart.disabled = true;
-            timerHours.classList.add('inactive');
-            newTimerHours.innerHTML = `${addLeadingZeros(hours, 2)}`;
-            newTimerHours.classList.remove('inactive');
-            timerMinutes.classList.add('inactive');
-            newTimerMinutes.innerHTML = `${addLeadingZeros(minutes, 2)}`;
-            newTimerMinutes.classList.remove('inactive');
-            timerSeconds.classList.add('inactive');
-            newTimerSeconds.innerHTML = `${addLeadingZeros(seconds, 2)}`;
-            newTimerSeconds.classList.remove('inactive');
-            const timerInterval = setInterval(()=>{
-                if (parseInt(seconds)===0 && parseInt(minutes)===0 && parseInt(hours)===0) {
-                    // console.log("finished");
-                    clearInterval(timerInterval);
-                } else {
-                    seconds--;
-                    if(parseInt(seconds) < 0) {
-                        seconds = 59; 
-                        minutes--;
-                        if(parseInt(minutes) < 0) {
-                            minutes = 59;
-                            hours--;
-                            if (parseInt(hours) < 0) {
-                                hours = 0
-                            }
-                        }
-                    }
-                
-                    newTimerSeconds.innerHTML = `${addLeadingZeros(seconds, 2)}`; 
-                    newTimerMinutes.innerHTML = `${addLeadingZeros(minutes, 2)}`; 
-                    newTimerHours.innerHTML = `${addLeadingZeros(hours, 2)}`; 
+        timerButtonStart.disabled = true;
+        timerButtonStop.disabled = false;
+        timerButtonReset.disabled = false;
+
+        timerHours.classList.add('inactive');
+        newTimerHours.innerHTML = `${addLeadingZeros(hours, 2)}`;
+        newTimerHours.classList.remove('inactive');
+        timerMinutes.classList.add('inactive');
+        newTimerMinutes.innerHTML = `${addLeadingZeros(minutes, 2)}`;
+        newTimerMinutes.classList.remove('inactive');
+        timerSeconds.classList.add('inactive');
+        newTimerSeconds.innerHTML = `${addLeadingZeros(seconds, 2)}`;
+        newTimerSeconds.classList.remove('inactive');
+        timerInterval = setInterval(makeTimerInteval,1000);    
+    }   
+
+}
+
+const continueTimer = () => {
+    timerInterval = setInterval(makeTimerInteval,1000);
+    timerButtonStart.classList.add('inactive');
+    timerButtonContinue.classList.remove('inactive');
+    timerButtonStart.disabled = true;
+    timerButtonContinue.disabled = true;
+}
+
+
+const makeTimerInteval = () => {
+    let hours = newTimerHours.innerHTML;
+    let minutes = newTimerMinutes.innerHTML;
+    let seconds = newTimerSeconds.innerHTML;
+
+    console.log(hours, minutes, seconds);
+    if (parseInt(seconds)===0 && parseInt(minutes)===0 && parseInt(hours)===0) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerButtonStart.disabled = true;
+        timerButtonStop.disabled = true;
+        timerButtonReset.disabled = false;
+        timerButtonStart.innerHTML = "Start"
+    } else {
+        // console.log("continuar tiempo");
+        seconds--;
+        if(parseInt(seconds) < 0) {
+            seconds = 59; 
+            minutes--;
+            if(parseInt(minutes) < 0) {
+                minutes = 59;
+                hours--;
+                if (parseInt(hours) < 0) {
+                    hours = 0
                 }
-                timerButtonStop.addEventListener('click' , () => {
-                    clearInterval(timerInterval);
-                    timerButtonStart.disabled = false;
-                    timerButtonStart.innerHTML = "Continue!!"
-                });
-                
-            },1000)
-            
+            }
         }
+        newTimerSeconds.innerHTML = `${addLeadingZeros(seconds, 2)}`; 
+        newTimerMinutes.innerHTML = `${addLeadingZeros(minutes, 2)}`; 
+        newTimerHours.innerHTML = `${addLeadingZeros(hours, 2)}`; 
+    }
+}
 
-    });
+const stopTimer = () => {
+    clearInterval(timerInterval);
+    // timerInterval = null;
+    timerButtonStart.disabled = false;
+    timerButtonStop.disabled = true;
+    timerButtonReset.disabled = false;
+    timerButtonStart.classList.add('inactive');
+    timerButtonContinue.classList.remove('inactive');
+}
+
+const resetTimer = () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timerButtonStart.disabled = false;
+    timerButtonStop.disabled = true;
+    timerButtonReset.disabled = false;
+    timerButtonStart.innerHTML = "Start";
     
-};
+    //disable p etiqeutees
+    timerAdvertise.classList.add('inactive');
+    timerHours.classList.remove('inactive');
+    newTimerHours.classList.add('inactive');
+    timerMinutes.classList.remove('inactive');
+    newTimerMinutes.classList.add('inactive');
+    timerSeconds.classList.remove('inactive');
+    newTimerSeconds.classList.add('inactive');
 
-
-
+}

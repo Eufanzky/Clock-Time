@@ -68,8 +68,10 @@ function timerPage() {
     timerSection.classList.remove('inactive');
     pomodoroSection.classList.add('inactive');
 
+    
+    timerButtonStop.disabled = true;
+    timerButtonReset.disabled = true;
 
-    timerFunction();
 }
 function pomodoroPage() {
     homeLink.style.textDecoration = 'none';
